@@ -11,7 +11,14 @@ class customer{
     cin>>c_name;
     cout<<"enetr the address of costomer";
     cin>>address;
-               };
+               }
+	    display()
+	    { 
+	    cout<<"id"<<id;
+	    cout<<"customer name"<<c_name;
+	    cout<<"addresss"<<address;
+	    }
+}
 int main()
 { customer data;
 	ofstream fout;
@@ -25,16 +32,19 @@ int main()
 	{
 		case 1: ifstream fin("record.dat",ios::in);
 		        fin.seekg(0);
-		case 2:
+			break;
+			
+		case 2: data.
 		case 3:
 		case 4:
-		case 5:
+		case 5: data.customer_deatils() ;
+		         break;
 		default: break;
 	}
 	cout<<"enter the id";
 	cin>>id ;
 	cout>>"enter the name of customer";
-
+c
 	return 0;
 }
 
