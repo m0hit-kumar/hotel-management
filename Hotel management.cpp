@@ -34,9 +34,10 @@ int main()
 		        fin.seekg(0);
 			break;
 			
-		case 2: data.
-		case 3:
-		case 4:
+		case 2: data.display()
+                         break;
+		case 3: break;
+		case 4:. break;
 		case 5: data.customer_deatils() ;
 		         break;
 		default: break;
@@ -44,7 +45,7 @@ int main()
 	cout<<"enter the id";
 	cin>>id ;
 	cout>>"enter the name of customer";
-c
+
 	return 0;
 }
 
