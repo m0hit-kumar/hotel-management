@@ -1,6 +1,9 @@
 #include<iostream.h>
 #include<conio.h>
 #include <fstream.h>
+class date{ int day,year;
+            char month;
+}
 class customer{
 	int id;
 	char c_name,address;
