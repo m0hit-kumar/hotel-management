@@ -313,7 +313,8 @@ main()
         cout << "\n\t\t\t\t| 6. Check Out                          |";
         cout << "\n\t\t\t\t| 7. View Bookings                      |";
         cout << "\n\t\t\t\t| 8. View  Record                       |";
-        cout << "\n\t\t\t\t| 9.Enter 0 to exit                   |";
+        cout << "\n\t\t\t\t|9. Enter 9 to change password          |";
+        cout << "\n\t\t\t\t| 9.Enter 0 to exit                     |";
         cout << "\n\t\t\t\t|_______________________________________|";
         cout << "\n\t\t\t\tSelect your choice no. for task           ";
         cin >> x;
@@ -354,8 +355,16 @@ main()
             roomstatus();
             break;
         }
+        case 9:
+        {
+            int y;
+            cout << "\nEnter passcode - ";
+            cin >> y;
+            obj1.password(y);
+            break;
+        }
 
-               case 0:
+        case 0:
         {
             e = 0;
             break;
