@@ -158,7 +158,7 @@ void edit()
     cin >> rno;
     fstream wr, rd;
     rd.open("record.txt", ios::in);
-    wr.open("temp.txt", ios::out);
+    wr.open("tmp.txt", ios::out);
     rd.seekg(0, ios::end);
     int n = rd.tellg();
     n = n / sizeof(obj);
@@ -182,7 +182,7 @@ void edit()
     rd.close();
     wr.close();
     remove("record.txt");
-    rename("temp.txt", "record.txt");
+    rename("tmp.txt", "record.txt");
 }
 void roominfo()
 {
@@ -240,8 +240,8 @@ void leaveroom()
     cin >> rno;
     fstream rd, wr, nwr;
     rd.open("record.txt", ios::in);
-    wr.open("temp.txt", ios::app);
-    nwr.open("prevreco.txt", ios::app);
+    wr.open("tmp.txt", ios::app);
+    nwr.open("oldRecords.txt", ios::app);
     rd.seekg(0, ios::end);
     int n = rd.tellg();
     n = n / sizeof(obj);
@@ -265,12 +265,12 @@ void leaveroom()
     rd.close();
     wr.close();
     remove("record.txt");
-    rename("temp.txt", "record.txt");
+    rename("tmp.txt", "record.txt");
 }
 void oldreco()
 {
     fstream rd;
-    rd.open("prevreco.txt", ios::in);
+    rd.open("oldRecords.txt", ios::in);
     rd.seekg(0, ios::end);
     int n = rd.tellg();
     n = n / sizeof(obj);
