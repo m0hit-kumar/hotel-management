@@ -290,8 +290,8 @@ main()
     cout << "\t\t\t\t*******************************************\n";
     cout << "\t\t\t\t* *                                     * *\n";
     cout << "\t\t\t\t* *              Welcome to             * *\n";
-    cout << "\t\t\t\t* *             Hotel Managment         * *\n";
-    cout << "\t\t\t\t* *                System               * *\n";
+    cout << "\t\t\t\t* *             Hostel Room             * *\n";
+    cout << "\t\t\t\t* *           Allotment System          * *\n";
     cout << "\t\t\t\t* *                                     * *\n";
     cout << "\t\t\t\t* *                                     * *\n";
     cout << "\t\t\t\t*******************************************\n";
@@ -303,7 +303,7 @@ main()
     while (e != 0)
     {
         cout << "\n\t\t\t\t=========================================";
-        cout << "\n\t\t\t\t|       HOTEL MANAGEMENT SYSTEM         |";
+        cout << "\n\t\t\t\t|       HOSTEL ROOM ALLOT. SYSTEM       |";
         cout << "\n\t\t\t\t=========================================";
         cout << "\n\t\t\t\t| 1. Book room                          |";
         cout << "\n\t\t\t\t| 2. Rooms status                       |";
@@ -313,8 +313,8 @@ main()
         cout << "\n\t\t\t\t| 6. Check Out                          |";
         cout << "\n\t\t\t\t| 7. View Bookings                      |";
         cout << "\n\t\t\t\t| 8. View  Record                       |";
-        cout << "\n\t\t\t\t|9. Enter 9 to change password          |";
-        cout << "\n\t\t\t\t| 9.Enter 0 to exit                     |";
+        cout << "\n\t\t\t\t| 9. Enter 9 to change password         |";
+        cout << "\n\t\t\t\t| 10.Enter 0 to exit                    |";
         cout << "\n\t\t\t\t|_______________________________________|";
         cout << "\n\t\t\t\tSelect your choice no. for task           ";
         cin >> x;
@@ -377,7 +377,7 @@ main()
     cout << "\t\t\t\t*******************************************\n";
     cout << "\t\t\t\t* *               LOGOUT                * *\n";
     cout << "\t\t\t\t* *              FROM THE               * *\n";
-    cout << "\t\t\t\t* *        HOTEL MANAGMENT SYSTEM       * *\n";
+    cout << "\t\t\t\t* *        HOSTEL ROOM ALLOT. SYSTEM    * *\n";
     cout << "\t\t\t\t*******************************************\n";
     cout << "\t\t\t\t*******************************************\n";
     system("pause");
