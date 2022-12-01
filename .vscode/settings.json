@@ -2,6 +2,8 @@
   "C_Cpp.errorSquiggles": "Enabled",
   "files.associations": {
     "\"html.suggest.html5\"": "\"true\"",
-    "fstream": "cpp"
+    "fstream": "cpp",
+    "iostream": "cpp",
+    "iosfwd": "cpp"
   }
 }
