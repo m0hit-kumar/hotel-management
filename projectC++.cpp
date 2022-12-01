@@ -26,7 +26,7 @@ public:
     }
 };
 pass obj1;
-class hotel
+class hostel
 {
 public:
     int room_no;
@@ -62,7 +62,7 @@ public:
         cout << "\n----------------------------";
     }
 };
-hotel obj;
+hostel obj;
 int check(int r)
 {
     int flag = 1;
@@ -282,10 +282,11 @@ void oldreco()
         cout << "\nCheckout date " << obj.date1;
     }
 }
+
 main()
 {
     int e = 1, x;
-
+    //
     cout << "\t\t\t\t*******************************************\n";
     cout << "\t\t\t\t*******************************************\n";
     cout << "\t\t\t\t* *                                     * *\n";
@@ -296,7 +297,7 @@ main()
     cout << "\t\t\t\t* *                                     * *\n";
     cout << "\t\t\t\t*******************************************\n";
     cout << "\t\t\t\t*******************************************\n";
-
+    //
     system("pause");
     system("cls");
 
