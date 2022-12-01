@@ -251,7 +251,7 @@ void roominfo()
         }
     }
 }
-void customerinfo()
+void studentinfo()
 {
     char na[30];
     cin.ignore();
@@ -313,7 +313,19 @@ void leaveroom()
 
 int main()
 {
-    hostel h;
+    system("cls");
+    cout << "\t\t\t\t*******************************************\n";
+    cout << "\t\t\t\t*******************************************\n";
+    cout << "\t\t\t\t* *                                     * *\n";
+    cout << "\t\t\t\t* *              Welcome to             * *\n";
+    cout << "\t\t\t\t* *             Hostel Room             * *\n";
+    cout << "\t\t\t\t* *           Allotment System          * *\n";
+    cout << "\t\t\t\t* *                                     * *\n";
+    cout << "\t\t\t\t* *                                     * *\n";
+    cout << "\t\t\t\t*******************************************\n";
+    cout << "\t\t\t\t*******************************************\n";
+    //
+    system("pause");
     system("cls");
 
     char q = 'a';
@@ -326,36 +338,63 @@ int main()
         cout << "\n\t\t\t\t=========================================";
         cout << "\n\t\t\t\t| 1. Allot room                         |";
         cout << "\n\t\t\t\t| 2. Rooms status                       |";
-        cout << "\n\t\t\t\t| 3. Allotment Room                     |";
-        cout << "\n\t\t\t\t| 4. View customer details              |";
+        cout << "\n\t\t\t\t| 3. Get Room Allotment details         |";
+        cout << "\n\t\t\t\t| 4. View Student details               |";
         cout << "\n\t\t\t\t| 5. Edit the details                   |";
-        cout << "\n\t\t\t\t| 6. Check Out                          |";
-        cout << "\n\t\t\t\t| 7. View Bookings                      |";
-        cout << "\n\t\t\t\t| 8. View  Record                       |";
-        cout << "\n\t\t\t\t| 9. Enter 9 to change password         |";
-        cout << "\n\t\t\t\t| 10.Enter 0 to exit                    |";
+        cout << "\n\t\t\t\t| 6. Leave room                         |";
+        cout << "\n\t\t\t\t| 7. View rooms status                  |";
+        cout << "\n\t\t\t\t| 8. Add vistor                         |";
+        cout << "\n\t\t\t\t| 9.Enter q to exit                     |";
         cout << "\n\t\t\t\t|_______________________________________|";
-        cout << "\n\t\t\t\tSelect your choice no. for task           ";
+        cout << "\n\n\t\t\tSelect your choice no. for task           ";
         cin >> selection;
         switch (selection)
         {
-
         case 1:
-        {
-            h.vistors_record();
-            break;
-        }
-        case 2:
-        {
-            h.hostel_report();
-            break;
-        }
-        case 3:
         {
             allot_room();
             break;
         }
-
+        case 2:
+        {
+            rstatus();
+            break;
+        }
+        case 3:
+        {
+            roominfo();
+            break;
+        }
+        case 4:
+        {
+            studentinfo();
+            break;
+        }
+        case 5:
+        {
+            changeRoomNo();
+            break;
+        }
+        case 6:
+        {
+            leaveroom();
+            break;
+        }
+        case 7:
+        {
+            roomstatus();
+            break;
+        }
+        case 8:
+        {
+            vistorEntry();
+            break;
+        }
+        case 9:
+        {
+            vistorEntry();
+            break;
+        }
         default:
         {
             q = 'q';
