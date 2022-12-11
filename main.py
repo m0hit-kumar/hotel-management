@@ -1,7 +1,8 @@
 from tkinter import *
 import tkinter as tk
 from tkinter import ttk
-
+import os
+import ast
 from screeninfo import get_monitors
 
 
@@ -62,11 +63,30 @@ def table(screen, data, heading):
             e.insert(END, lst[i][j])
 
 
+def print_list(screen, data):
+    print(data)
+    Label(screen, text="List of the avalaiable room:-",
+          font="none 15 bold", bg="black", fg="white").place(relx=0.01, rely=0.15)
+    pos = 0.01
+    for i in range(len(data)):
+        pos = pos+0.02
+        Label(screen, text=str(data[i])).place(
+            relx=pos, rely=0.2, width=20, anchor=CENTER)
+
+
 def allot_room():
     room_allot = tk.Tk()
-    room_allot.geometry("800x800")
+    room_allot.geometry(_width+'x'+_height)
     room_allot.configure(bg="black")
-    room_allot.eval('tk::PlaceWindow . center')
+    tk.Label(room_allot, text="Allot Room to the student",
+             font="none 40 bold", fg='white', bg="black").pack(ipady=40, side=TOP)
+    ttk.Separator(room_allot, orient='horizontal').place(
+        relx=0, rely=0.12, relheight=0.001, relwidth=1)
+    rooms = open("rooms.txt", "r")
+    data = rooms.read()
+    rooms.close()
+    data = ast.literal_eval(data)
+    print_list(room_allot, data)
 
 
 # <================================ Menu Screen/Main Screen Start=====================================>
