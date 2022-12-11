@@ -62,7 +62,14 @@ def table(screen, data, heading):
             e.insert(END, lst[i][j])
 
 
-# <========================================================= Menu Screen/Main Screen Start============================================>
+def allot_room():
+    room_allot = tk.Tk()
+    room_allot.geometry("800x800")
+    room_allot.configure(bg="black")
+    room_allot.eval('tk::PlaceWindow . center')
+
+
+# <================================ Menu Screen/Main Screen Start=====================================>
 menu = tk.Tk()
 menu.geometry(_width+'x'+_height)
 menu.title("Dashboard")
@@ -77,7 +84,7 @@ tk.Button(menu, text="Database", command=pr, width=20,
           height=5).place(relx=0.05, rely=0.19, anchor=CENTER)
 tk.Button(menu, text="Mark Attdedance", command=pr, width=20,
           height=5).place(relx=0.05, rely=0.30, anchor=CENTER)
-tk.Button(menu, text="Allot Room", command=pr, width=20,
+tk.Button(menu, text="Allot Room", command=allot_room, width=20,
           height=5).place(relx=0.05, rely=0.41, anchor=CENTER)
 tk.Button(menu, text="Edit Details", command=pr, width=20,
           height=5).place(relx=0.05, rely=0.52, anchor=CENTER)
@@ -90,7 +97,7 @@ tk.Button(menu, text="Exit", command=lambda: exitWindow(menu), width=20, fg="red
 tk.Label(menu, text=instructions,
          font="none 20 bold", fg='white', bg="black", justify=LEFT).place(relx=0.15, rely=0.19)
 
-# <============================================================= Main Screen End============================================>
+# <=================================================== Main Screen End========================================>
 
 
 # table(menu, lst, lst_head)
