@@ -306,12 +306,12 @@ def viewDetails():
     ttk.Separator(studInfo, orient='horizontal').place(
         relx=0, rely=0.12, relheight=0.001, relwidth=1)
     tk.Label(studInfo, text="Enter the Roll no of the student",
-             bg="black", fg="white", width=50, font="none 10 bold").pack(side="top")
+             bg="black", fg="white", width=50, font="none 15 bold").pack(side="top")
     tk.Entry(studInfo, textvariable=rollno,
              bg="white", fg="black", width=20).pack()
     tk.Button(studInfo, text="Exit", width=20, fg="red",
               command=studInfo.destroy).pack(side="right")
-    tk.Button(studInfo, text="Get Info", width=20, fg="red",
+    tk.Button(studInfo, text="Get Info", width=20, fg="black",
               command=getStudInfo).pack(side="right")
 
 # <=============================View Student Details================================>
