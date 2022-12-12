@@ -1,0 +1,1 @@
+{1: {'rollno': 'ew', 'name': 'efwe', 'guardain': 'qw', 'department': 'eq', 'mob': '2345678', 'address': 'wefgb', 'room': 12, 'payment': 'wret', 'vistors': 'wf'}, 2: {'rollno': 'wd', 'name': 'wd', 'guardain': 'wefwg', 'department': 'efwgf', 'mob': '23436', 'address': 'fgdhhd', 'room': 5, 'payment': 'gethrhy', 'vistors': 'febrhhy'}}
