@@ -49,11 +49,11 @@ def getData():
 
 def editDetails():
 
-    room_allot = tk.Tk()
-    room_allot.geometry(_width+'x'+_height)
-    room_allot.configure(bg="black")
+    edit_screen = tk.Tk()
+    edit_screen.geometry(_width+'x'+_height)
+    edit_screen.configure(bg="black")
 
-    def allotTheRoom(rollno, name, guardain, department, address, mob, room, payment):
+    def editData(rollno, name, guardain, department, address, mob, room, payment):
 
         rollno = (rollno.get())
         name = (name.get())
@@ -64,88 +64,79 @@ def editDetails():
         room = (room.get())
         room = int(room)
         payment = (payment.get())
-
-        room_list = open("room_list.txt", "r")
-        available_rooms = room_list.read()
-        room_list.close()
-        available_rooms = ast.literal_eval(available_rooms)
-        if room not in available_rooms:
+        data = getData()
+        alloted_room = [i for i in data.keys()]
+        if room not in alloted_room:
             tk.Label(
-                room_allot, text="Room not exist or room not available at a moment").pack()
+                edit_screen, text="Room  doesnn't exist or room is allocated yet").pack()
 
         else:
-            room_list = open("room_list.txt", "w")
-            available_rooms.remove(room)
-            room_list.write(str(available_rooms))
-            room_list.close()
             dataHouse(rollno, name, department, guardain,
                       room, mob, address, payment)
-            tk.Label(room_allot, text="Room no" + str(room) +
-                     "is alloted successfully to" + name + "of rollno" + str(rollno)).pack()
+            tk.Label(edit_screen, text="Data Updated successfully").pack()
 
-    rollno = tk.StringVar(room_allot)
-    name = tk.StringVar(room_allot)
-    guardain = tk.StringVar(room_allot)
-    department = tk.StringVar(room_allot)
-    mob = tk.StringVar(room_allot)
-    address = tk.StringVar(room_allot)
-    room = tk.StringVar(room_allot)
-    payment = tk.StringVar(room_allot)
+    rollno = tk.StringVar(edit_screen)
+    name = tk.StringVar(edit_screen)
+    guardain = tk.StringVar(edit_screen)
+    department = tk.StringVar(edit_screen)
+    mob = tk.StringVar(edit_screen)
+    address = tk.StringVar(edit_screen)
+    room = tk.StringVar(edit_screen)
+    payment = tk.StringVar(edit_screen)
 
-    tk.Label(room_allot, text="Update Data of the student",
+    tk.Label(edit_screen, text="Update Data of the student",
              font="none 40 bold", fg='white', bg="black").pack(ipady=40, side=TOP)
-    ttk.Separator(room_allot, orient='horizontal').place(
+    ttk.Separator(edit_screen, orient='horizontal').place(
         relx=0, rely=0.12, relheight=0.001, relwidth=1)
     rooms = open("room_list.txt", "r")
     data = rooms.read()
     rooms.close()
     data = ast.literal_eval(data)
-    print_list(room_allot, data)
-    ttk.Separator(room_allot, orient='horizontal').place(
+    ttk.Separator(edit_screen, orient='horizontal').place(
         relx=0, rely=0.22, relheight=0.001, relwidth=1)
 
-    tk.Label(room_allot, text="Note: To update data you need you enter a new room no with all th details",
-             font="none 10 bold", fg='yellow', bg="black").place(relx=0.4, rely=0.25)
-    tk.Label(room_allot, text="Roll no.",
+    tk.Label(edit_screen, text="Note: To update data you need you enter old room no. and has to renter all the details.",
+             font="none 20 bold", fg='yellow', bg="black").place(relx=0.1, rely=0.14)
+    tk.Label(edit_screen, text="Roll no.",
              font="none 10 bold", fg='white', bg="black").place(relx=0.4, rely=0.30)
-    tk.Label(room_allot, text="Name",
+    tk.Label(edit_screen, text="Name",
              font="none 10 bold", fg='white', bg="black").place(relx=0.4, rely=0.33)
-    tk.Label(room_allot, text="Guardain",
+    tk.Label(edit_screen, text="Guardain",
              font="none 10 bold", fg='white', bg="black").place(relx=0.4, rely=0.36)
-    tk.Label(room_allot, text="Department",
+    tk.Label(edit_screen, text="Department",
              font="none 10 bold", fg='white', bg="black").place(relx=0.4, rely=0.39)
-    tk.Label(room_allot, text="Address",
+    tk.Label(edit_screen, text="Address",
              font="none 10 bold", fg='white', bg="black").place(relx=0.4, rely=0.42)
-    tk.Label(room_allot, text="Mobile",
+    tk.Label(edit_screen, text="Mobile",
              font="none 10 bold", fg='white', bg="black").place(relx=0.4, rely=0.45)
-    tk.Label(room_allot, text="Room no.",
+    tk.Label(edit_screen, text="Room no.",
              font="none 10 bold", fg='white', bg="black").place(relx=0.4, rely=0.48)
-    tk.Label(room_allot, text="Payment Status",
+    tk.Label(edit_screen, text="Payment Status",
              font="none 10 bold", fg='white', bg="black").place(relx=0.4, rely=0.51)
 
-    tk.Entry(room_allot, textvariable=rollno,
+    tk.Entry(edit_screen, textvariable=rollno,
              font="none 10 bold", bg='white', fg="black").place(relx=0.5, rely=0.30)
-    tk.Entry(room_allot, textvariable=name,
+    tk.Entry(edit_screen, textvariable=name,
              font="none 10 bold", bg='white', fg="black").place(relx=0.5, rely=0.33)
-    tk.Entry(room_allot, textvariable=guardain,
+    tk.Entry(edit_screen, textvariable=guardain,
              font="none 10 bold", bg='white', fg="black").place(relx=0.5, rely=0.36)
-    tk.Entry(room_allot, textvariable=department,
+    tk.Entry(edit_screen, textvariable=department,
              font="none 10 bold", bg='white', fg="black").place(relx=0.5, rely=0.39)
-    tk.Entry(room_allot, textvariable=address,
+    tk.Entry(edit_screen, textvariable=address,
              font="none 10 bold", bg='white', fg="black").place(relx=0.5, rely=0.42)
-    tk.Entry(room_allot, textvariable=mob,
+    tk.Entry(edit_screen, textvariable=mob,
              font="none 10 bold", bg='white', fg="black").place(relx=0.5, rely=0.45)
-    tk.Entry(room_allot, textvariable=room,
+    tk.Entry(edit_screen, textvariable=room,
              font="none 10 bold", bg='white', fg="black").place(relx=0.5, rely=0.48)
-    tk.Entry(room_allot, textvariable=payment,
+    tk.Entry(edit_screen, textvariable=payment,
              font="none 10 bold", bg='white', fg="black").place(relx=0.5, rely=0.51)
 
-    user_prof = partial(allotTheRoom, rollno, name, guardain,
+    user_prof = partial(editData, rollno, name, guardain,
                         department, address, mob, room, payment)
 
-    tk.Button(room_allot, text="Update Data", command=user_prof, width=10,  height=1,
+    tk.Button(edit_screen, text="Update Data", command=user_prof, width=10,  height=1,
               font="none 10 bold", bg='white', fg="black").place(relx=0.6, rely=0.71, anchor=CENTER)
-    tk.Button(room_allot, text="Cancel", command=lambda: room_allot.destroy(), width=10,  height=1,
+    tk.Button(edit_screen, text="Cancel", command=lambda: edit_screen.destroy(), width=10,  height=1,
               font="none 10 bold", bg='white', fg="black").place(relx=0.7, rely=0.71, anchor=CENTER)
 
 
@@ -495,11 +486,11 @@ def leaveHostel():
             myfile.write(str(data))
             myfile.close()
             room_list = open("room_list.txt", "r")
-            rooms= room_list.read()
+            rooms = room_list.read()
             room_list.close()
-            rooms=ast.literal_eval(rooms)
+            rooms = ast.literal_eval(rooms)
             rooms.append(roomNo)
-            new_rooms_list=open("room_list.txt", "w")
+            new_rooms_list = open("room_list.txt", "w")
             new_rooms_list.write(str(rooms))
             new_rooms_list.close()
 
