@@ -18,7 +18,7 @@ for i in get_monitors():
     _height = str(i.height)
 
 
-instructions = 'Instructions:-' + "\n\n1)Database btuuon allow you to see all data our hostel\n\n2)Marl attdemdace wull allow to mark attdenace of the student\n\n3) allot room button will allow you to allot atdance of student\n\n4) Edit details button will allow to edit details of the users\n\n5)View Students details allow to se the user info\n\n6)vistor button is to add vistor record\n\n7) exit button help in exiting from the panel"
+instructions = 'Instructions:-' + "\n\n1) The database button allows you to see all data our hostel\n\n2) Mark attendance will allow marking attendance of the student\n\n3) Allot room button will allow you to allot attendance of student\n\n4) The edit details button will allow editing details of the users\n\n5) View Student's details allow seeing the user info\n\n6) The visitor button is to add visitor record\n\n7) Exit button help in exiting from the panel"
 
 
 def exitWindow(window1):
@@ -75,11 +75,108 @@ def table(screen, data, heading):
             posx = 0.08+posx
         posy = posy+0.03
 
+
 # <======================== mark attdendance ==============================>
- def databases = tk.Tk()
-    databases.geometry(_width+'x'+_height)
-    databases.configure(bg="black")
+
+
+def attend():
+    attdendance = tk.Tk()
+    attdendance.geometry("600x200")
+    attdendance.configure(bg="black")
+
+    def mark(rollno):
+        rollno = (rollno.get())
+        print(rollno)
+        data = getData()
+        marked = False
+        for i in data:
+            if data[i]['rollno'] == rollno:
+                data[i]['attdendance'] += 1
+                tk.Label(attdendance, text="Attdendance marked").pack(
+                    side="bottom")
+                marked = True
+            myfile = open("database.txt", "w")
+            myfile.write(str(data))
+            myfile.close()
+
+        if marked == False:
+            tk.Label(attdendance, text="Roll no doesnt exist").pack(
+                side="bottom")
+
+    rollno = tk.StringVar(attdendance)
+
+    tk.Label(attdendance, text="Mark attdendance", justify=LEFT,
+             font="none 20 bold", fg='white', bg="black").pack(padx=10, pady=20, anchor="w")
+    markeME = partial(mark, rollno)
+
+    tk.Label(attdendance, text="Enter Roll no.", fg='white', bg="black",
+             font="none 10").place(relx=0, rely=0.5)
+    tk.Entry(attdendance, width=40, textvariable=rollno).place(
+        relx=0.4, rely=0.5)
+    tk.Button(attdendance, text="Mark Attdedance",
+              command=markeME).place(relx=0.5, rely=0.7)
+    tk.Button(attdendance, text="Exit", fg="red",
+              command=attdendance.destroy).place(relx=0.75, rely=0.7)
+
+
 # <======================== mark attdendance ==============================>
+
+
+# <========================== View Student Details=================================>
+
+def viewDetails():
+
+    studInfo = tk.Tk()
+    studInfo.geometry(_width+'x'+_height)
+    studInfo.configure(bg="black")
+
+    def studData(rollno, heading):
+        rollno = (rollno.get())
+        data = getData()
+        stuProf = [data[i]
+                   for i in data if data[i]["rollno"] == rollno]
+        stuProf = [stuProf[0][i] for i in stuProf[0]]
+        print(stuProf)
+        posx = 0.01
+        for i in range(len(heading)):
+            h = Entry(studInfo, width=20, fg='blue', justify='center',
+                      font=('Arial', 10, 'bold'))
+            e = Entry(studInfo, width=20, fg='black', justify='center',
+                      font=('Arial', 10))
+            e.place(rely=0.2, relx=posx)
+            e.insert(END, heading[i])
+            h.place(rely=0.25, relx=posx)
+            h.insert(END, stuProf[i])
+            posx = 0.1+posx
+
+    heading = [
+        "Roll no",
+        "Name",
+        "Guradain",
+        "Department",
+        "Mobile",
+        "Address",
+        "Room no",
+        "Payment",
+        "Vistor",
+        'attdendance'
+    ]
+    rollno = tk.StringVar(studInfo)
+    getStudInfo = partial(studData, rollno, heading)
+    tk.Label(studInfo, text="Student Profile",
+             font="none 40 bold", fg='white', bg="black").pack(ipady=40, side=TOP)
+    ttk.Separator(studInfo, orient='horizontal').place(
+        relx=0, rely=0.12, relheight=0.001, relwidth=1)
+    tk.Label(studInfo, text="Enter the Roll no of the student",
+             bg="black", fg="white", width=50, font="none 10 bold").pack(side="top")
+    tk.Entry(studInfo, textvariable=rollno,
+             bg="white", fg="black", width=20).pack()
+    tk.Button(studInfo, text="Exit", width=20, fg="red",
+              command=studInfo.destroy).pack(side="right")
+    tk.Button(studInfo, text="Get Info", width=20, fg="red",
+              command=getStudInfo).pack(side="right")
+
+# <=============================View Student Details================================>
 
 
 # <============================== view database =====================================>
@@ -99,13 +196,14 @@ def viewData():
         "Room no",
         "Payment",
         "Vistor",
+        'attdendance'
     ]
     tk.Label(databases, text="Database View",
              font="none 40 bold", fg='white', bg="black").pack(ipady=40, side=TOP)
     ttk.Separator(databases, orient='horizontal').place(
         relx=0, rely=0.12, relheight=0.001, relwidth=1)
     data = getData()
-    print(data)
+    # print(data)
     table(databases, data, heading)
 
     tk.Button(databases, text="Exit", width=20, fg="red",
@@ -113,12 +211,6 @@ def viewData():
 
 
 # <============================== view database =====================================>
-lst_head = ["Sno.", "Name", "Place", "Age"]
-lst = [(1, 'Raj', 'Mumbai', 19),
-       (2, 'Aaryan', 'Pune', 18),
-       (3, 'Vaishnavi', 'Mumbai', 20),
-       (4, 'Rachna', 'Mumbai', 21),
-       (5, 'Shubham', 'Delhi', 21)]
 
 
 def print_list(screen, data):
@@ -132,7 +224,6 @@ def print_list(screen, data):
 
 
 # <========================== Allot room window start ==============================================>
-
 
 def allot_room():
 
@@ -232,8 +323,9 @@ def allot_room():
     tk.Button(room_allot, text="Cancel", command=lambda: room_allot.destroy(), width=10,  height=1,
               font="none 10 bold", bg='white', fg="black").place(relx=0.7, rely=0.71, anchor=CENTER)
 
-
 # <======================== Allot room window end ==============================================>
+
+
 # <================================ Menu Screen/Main Screen Start=====================================>
 menu = tk.Tk()
 menu.geometry(_width+'x'+_height)
@@ -247,13 +339,13 @@ separator = ttk.Separator(menu, orient='vertical').place(
     relx=0.1, rely=0.12, relwidth=0.001, relheight=1)
 tk.Button(menu, text="Database", command=viewData, width=20,
           height=5).place(relx=0.05, rely=0.19, anchor=CENTER)
-tk.Button(menu, text="Mark Attdedance", command=pr, width=20,
+tk.Button(menu, text="Mark Attdedance", command=attend, width=20,
           height=5).place(relx=0.05, rely=0.30, anchor=CENTER)
 tk.Button(menu, text="Allot Room", command=allot_room, width=20,
           height=5).place(relx=0.05, rely=0.41, anchor=CENTER)
 tk.Button(menu, text="Edit Details", command=pr, width=20,
           height=5).place(relx=0.05, rely=0.52, anchor=CENTER)
-tk.Button(menu, text="View Student Details", command=pr, width=20,
+tk.Button(menu, text="View Student Details", command=viewDetails, width=20,
           height=5).place(relx=0.05, rely=0.63, anchor=CENTER)
 tk.Button(menu, text="Vistors", command=pr, width=20,
           height=5).place(relx=0.05, rely=0.74, anchor=CENTER)
@@ -289,6 +381,8 @@ def dataHouse(rollno, name, department, guardain, room, mob, address, payment):
         stud[room]["room"] = room
         stud[room]["payment"] = payment
         stud[room]["vistors"] = ""
+        stud[room]["attdendance"] = 0
+
         database.close()
         database = open("database.txt", "w")
         print("$$$$$$$$", stud)
@@ -313,6 +407,8 @@ def dataHouse(rollno, name, department, guardain, room, mob, address, payment):
         stud[room]["room"] = room
         stud[room]["payment"] = payment
         stud[room]["vistors"] = ""
+        stud[room]["attdendance"] = 0
+
         database.close()
         database = open("database.txt", "w")
         print("$$$$$$$$")
